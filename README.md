@@ -80,7 +80,7 @@ My Left Eye Sees Ghosts (Ngo joh aan gin diy g.../5.0,
 
 ## For More Information
 
-See the full analysis of my findings in DoctorsAppointment.ipynb
+See the full analysis of my findings in Recommendations.ipynb
 
 Contact me at jmstipanowich@gmail.com
 
@@ -90,6 +90,6 @@ Contact me at jmstipanowich@gmail.com
 
 ├── DoctorNoShowPowerpoint1.pdf
 
-├── DoctorsAppointment.ipynb
+├── Recommendations.ipynb
 
 ├── README.md
