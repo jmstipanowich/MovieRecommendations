@@ -56,18 +56,19 @@ Both recommendation systems did well, but how do they address a common problem k
 
 - Five similar movies to "Toy Story" from the neighboring users in the KNN model were: 
 
-Title                                               Rating
+Title/Rating:
 
 
 
 - Five similar movies to "Toy Story" from the function-based built out recommendation system were:
 
-Title                                               Rating
-SORI: Voice from the Heart (2016)                   5.0
-Rivers and Tides (2001)                             5.0
-Presto (2008)                                       5.0
-All the Vermeers in New York (1990)                 5.0
-My Left Eye Sees Ghosts (Ngo joh aan gin diy g...   5.0
+Title/Rating:                                       
+     
+SORI: Voice from the Heart (2016)/5.0,
+Rivers and Tides (2001)/5.0,
+Presto (2008)/5.0,
+All the Vermeers in New York (1990)/5.0,
+My Left Eye Sees Ghosts (Ngo joh aan gin diy g.../5.0,
 
 ## Recommendations for Further Analysis
 
