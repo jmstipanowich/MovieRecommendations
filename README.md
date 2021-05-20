@@ -30,7 +30,7 @@ In order to look at the spread of ratings in the dataset for my analyses in this
 
 ![image.png](images/ratingschart.png)
 
-There were 100836 ratings of movies from past viewings of movies in the dataset. The most common movie rating was a '4' rating. However, I choose to look at the most highly rated movies (a '5' rated movie) when making movie recommendations.
+There were 100836 ratings of movies from past viewings of movies in the dataset. The most common movie rating was a '4' rating. However, I choose to look at the most highly rated movies (a '5' rated movie) when making most movie recommendations.
 
 Also, I constructed a graph of the number of rated movies for each unique user in the dataset: 
 
@@ -42,31 +42,40 @@ I prepared my data for data modeling or function-built procedures.
 
 ## Data Modeling
 
-After trying different models including logistic regression and k nearest neighbors, I chose to stick with a tree based model instead of some other model type. My focus was on getting an accurate model that had a lot of interaction terms. A tree based model seemed best for my evaluations.
+After trying different models and code I chose to go with two different paths to retrieving top 5 movie recommendations. The ways I decided to attain movie recommendations included a model-based method involving Singular Value Decomposition(SVD) with a K Nearest Neighbors model and the creation of a function-based, built out, non-model method to get movie recommendations just using a Euclidean distance metric for similarities and python code.
 
-I started off with a first decision tree classifier model that was very overfit. I decided to use this model to look at possible parameters for a parameter grid and produce another tree model to help improve model performance. I created graphs of max tree depth, minimum samples splits, and minimum samples for a leaf for my next tree model.
+For both recommendation system methods I decided to find similar users to user 43 in the dataset who watched the movie, "Toy Story", and rated the movie a '5'. This was a highly rated film and I want to find similar such films through recommendation systems.
 
-I instantiated a new tree-based model. However, that did not do well with the parameters I put into it. I put that model into random forest and grid search models to help prune my tree models further and come up with best parameters for my final tree-based model that used GridSearchCV.
+The KNN model that included SVD had a solid RMSE of ---. The KNN model determined five similar neighbor users to user 43 who watched the movie, "Toy Story". Most of the movie recommendations from this system were movie released around the same year that had high ratings.
 
-My final model had very close accuracy scores for training and test data of both around 0.57 with the slightest bit of underfitting. The final model had an AUC of 0.7, which compares the false positive and true positive rates effectively. My final recall score shows the true positive rate is starting to get more weight than the false positive rate in comparison to previous models. The trend in "no-shows" is staring to being identified. The f1 score was best for my final model. I wanted to get fairly balanced precision and recall scores for my model. I would rather believe someone was not going to show up for an appointment and have them show up than believe a person was going to show up for an appointment and have them be a "no-show". Recall represents a minimization of false negatives.
+The function-based built out method used a Euclidean distance metric to calculate user similarities.The function took out movies that were already watched by the user to increase the chance of unique movie recommendations. The function sorted the movies to only mostly recommend movies rated a "5" to keep with the theme of recommending only highly rated movies.
 
-I chose to look at the feature importances for my final tree-based model. Age, SMS_received, and DayDifference seemed to be the columns most influential in the results of the data. I decided to include permutation importance because feature importance does not reshuffle the features to create more balanced results. The directions of the feature importance is not obvious by itself. Permutation importance allows for preserving the distribution of the variable of each predictor that influences model performance. The Age, SMS_received, and DayDifference columns still seemed to be the columns that hold the most weight when analyzing the data.
+Both recommendation systems did well, but how do they address a common problem known as the cold start problem? The cold start problem occurs where a new user is introduced to the dataset that has not provided a substantial amount of information to make recommendations. SVD was included in the KNN model to address the cold start problem. SVD involves the creation of a sparse matrix where user ratings for movies can be inferred based off of a few provided ratings or small amount of information from a new user in relation to already provided user information. The new user can be asked to provide a small amount of information about possible interests and a new user can be categorized based on similar user ratings to determine what they might like. Also, what is popular or trending can be a recommendation created for a new user. The KNN model mainly recommended highly rated movies around the same year as "Toy Story" was released, so what was popular in the year "Toy Story" was released was usually recommended to deal with the cold start problem. For the function-based recommendation system unrated movies were filled in with the mean rating for each column in the user ratings dataframe. A collaborative filtering user-based method was instilled. Movies that were already watched were left out of recommendations for a user. Movies that were recommended to users and considered popular were just movies that were highly rated by lots of users.
 
 ## Conclusions
 
-- Age should be included in future doctor office analyses. The Age column seemed to exhibit high logistic regression importance, random forest feature importance, and permutation importance as well. The average age of a "no-show" was lower than the average age of a person who attended an appointment.  Older people appear to attend appointments more often than younger people on average. Further analysis might help.
+- Five similar movies to "Toy Story" from the neighboring users in the KNN model were: 
 
-- Book less appointments farther out from the actual appointment day. The average number of days 
-away from an appointment for a "no-show" was higher than the average number of days away from an appointment of someone who attended their appointment. Also, the DayDifference column seemed to have high logistic regression importance, random forest feature importance, and permutation importance.
+Title                                               Rating
 
-- Remind people more frequently of their appointment whether by phone or text. The DayDifference columns and SMS_received columns showed strong relationships with "no-shows". The DayDifference column and SMS _received columns seemed to have high logistic regression importance, random forest feature importance, and permutation importance. Appointment reminders could help decrease the number of "no-show" appointments and increase memory potential of a scheduled appointment before the appointment takes place. 
 
+
+- Five similar movies to "Toy Story" from the function-based built out recommendation system were:
+
+Title                                               Rating
+SORI: Voice from the Heart (2016)                   5.0
+Rivers and Tides (2001)                             5.0
+Presto (2008)                                       5.0
+All the Vermeers in New York (1990)                 5.0
+My Left Eye Sees Ghosts (Ngo joh aan gin diy g...   5.0
 
 ## Recommendations for Further Analysis
 
-- Consider gender more in future analyses. Gender had slight logistic regression importance, random forest feature importance, and permutation importance.
+- Consider an item-item based collaborative filtering method for getting recommendations
 
-- Procure a "no-show" analysis based on neighborhood. Some neighborhoods may have stronger correlations with "no-shows" than others.
+- Change the distance metric and parameters for my function-based recommendation system
+
+- Deploy a recommendation system for use to new users
 
 ## For More Information
 
