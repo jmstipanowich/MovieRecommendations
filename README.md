@@ -6,12 +6,12 @@ Author: James Stipanowich
 
 ## Project Overview
 
-Watching movies can be a lot of fun. When a person watches a movie they often judge the movie they encounter. Often the person categorizes and scores a movie based on information from previous movies the person has watched. The opinions on movies a person has define what someone watches and might determine what someone chooses to watch in the future. What if specific information is desired on great movies to watch in the future based on a current highly enjoyed movie? How can a computer imitate the human task of identifying highly rated movies based on opinions on movies a person has watched and uncover other similar movies for a person to watch in the future? The answer is with recommendation systems. Recommendation systems input movie information from movie lovers into a computer algorithm to provide a movie lover with similar movies to watch based on the current movie opinions and information from a movie lover as well as other related sources. The recommendation systems can often take a person's love for a movie and through an algorithm find other popular, similar movies for that person to watch in the future.
+Watching movies can be a lot of fun. When a person watches a movie, they often judge the movie they encounter. Often the person categorizes and scores a movie based on information from previous movies the person has watched. The opinions about movies a person has define what someone watches and might determine what someone chooses to watch in the future. What if specific information is desired on great movies to watch in the future based on a current highly enjoyed movie? How can a computer imitate the human task of identifying highly rated movies based on opinions about movies a person has watched and uncover other similar movies for a person to watch in the future? The answer is with recommendation systems. Recommendation systems input movie information from movie lovers into a computer algorithm to provide a movie lover with similar movies to watch based on the current movie opinions and information from a movie lover as well as other related sources. The recommendation systems can often take a person's love for a movie and through an algorithm find other popular, similar movies for that person to watch in the future.
 
 
 ## Business Problem
 
-In this project, I am acting as a data scientist in a research lab at the University of Minnesota to build a recommendation system that recommends highly rated movies to people in the University of Minnesota area based on some past information and opinions on great movies expressed by these people. The project contains both modeling and function built-out methods for getting movie recommendations. I want to use a collaborative filtering user-based method to define movie recommendations for the people in this area. That means that the opinions of the movie raters involved in the experiment may affect the resulting recommendations for the other movie raters in the experiment. I plan to uncover 5 new movie recommendations of movies for any person to watch involved in my experiment using my specific recommendation system algorithms for them each individually.
+In this project, I am acting as a data scientist in a research lab at the University of Minnesota to build a recommendation system that recommends highly rated movies to people in the University of Minnesota area based on some past information and opinions on great movies expressed by these people. The project contains both modeling and function built-out methods for getting movie recommendations. I want to use a collaborative filtering user-based method to define movie recommendations for the people in this area. That means that the opinions of the movie raters involved in the experiment may affect the resulting recommendations for the other movie raters in the experiment. I plan to uncover 5 new movie recommendations for any person to watch involved in my experiment using my specific recommendation system algorithms for them each individually.
 
 ## The Data
 
@@ -25,7 +25,7 @@ In order to look at the spread of ratings in the dataset for my analyses in this
 
 ![image.png](images/ratingschart.png)
 
-There were 100836 ratings of movies from past viewings of movies in the dataset. The most common movie rating was a '4' rating. However, I opt to look at the most highly rated movies (a '5' rated movie) when making most movie recommendations.
+There were 100836 ratings of movies from past viewings of movies in the dataset. The most common movie rating was a '4' rating. However, I opted to look at the most highly rated movies (a '5' rated movie) when making most movie recommendations.
 
 Also, I constructed a graph of the number of rated movies for each unique user in the dataset: 
 
@@ -35,13 +35,13 @@ There were explicit ratings from my dataset. The most number of ratings a single
 
 ## Data Modeling
 
-After trying different models and code I chose to go with two different paths to retrieving top 5 movie recommendations. The ways I decided to attain movie recommendations included a model-based method involving Singular Value Decomposition(SVD) with a K Nearest Neighbors model and the creation of a function-based, built out, non-model method to get movie recommendations just using a Euclidean distance metric for similarities and python code.
+After trying different models and code, I chose to go with two different paths to retrieving top 5 movie recommendations. The ways I decided to attain movie recommendations included a model-based method involving Singular Value Decomposition(SVD) with a K Nearest Neighbors model and the creation of a function-based, built out, non-model method to get movie recommendations just using a Euclidean distance metric for similarities and python code.
 
-For both recommendation system methods I decided to find similar users to user 43 in the dataset who watched the movie, "Toy Story", and rated the movie a '5'. This was a highly rated film and I want to find similar such films through recommendation systems.
+For both recommendation system methods I decided to find similar users to user 43 in the dataset who watched the movie, "Toy Story," and rated the movie a '5'. This was a highly rated film and I wanted to find similar such films through recommendation systems.
 
-The KNN model that included SVD had a solid RMSE of ---. The KNN model determined five similar neighbor users to user 43 who watched the movie, "Toy Story". Most of the movie recommendations from this system were movie released around the same year that had high ratings.
+The KNN model that included SVD had a solid RMSE of .8786. The KNN model determined five similar neighbor users to user 43 who watched the movie, "Toy Story." Most of the movie recommendations from this system were movies released around the same year that had high ratings.
 
-The function-based built out method used a Euclidean distance metric to calculate user similarities.The function took out movies that were already watched by the user to increase the chance of unique movie recommendations. The function sorted the movies to only mostly recommend movies rated a "5" to keep with the theme of recommending only highly rated movies.
+The function-based built out method used a Euclidean distance metric to calculate user similarities. The function took out movies that were already watched by the user to increase the chance of unique movie recommendations. The function sorted the movies to only mostly recommend movies rated a '5' to keep with the theme of recommending only highly rated movies.
 
 ## The Cold Start Problem
 
@@ -51,17 +51,19 @@ Both recommendation systems did well, but how do they address a common problem k
 
 - Five similar movies to "Toy Story" from the neighboring users in the KNN model with ratings were: 
 
-Title/Rating:
+Men in Black (a.k.a. MIB) (1997)/5.0,
+Forrest Gump (1994)/5.0,
+Star Wars: Episode IV - A New Hope (1977)/5.0,
+Pinocchio (1940)/4.5,
+and Mrs. Doubtfire (1993)/3.5
 
-
-
-- Five similar movies to "Toy Story" from the function-based built out recommendation system with ratings were:                                       
+- Five similar movies to "Toy Story" from the function-based, built out recommendation system with ratings were:                                       
      
 SORI: Voice from the Heart (2016)/5.0,
 Rivers and Tides (2001)/5.0,
 Presto (2008)/5.0,
 All the Vermeers in New York (1990)/5.0,
-My Left Eye Sees Ghosts (Ngo joh aan gin diy g.../5.0,
+and My Left Eye Sees Ghosts (Ngo joh aan gin diy g.../5.0
 
 ## Recommendations for Further Analysis
 
