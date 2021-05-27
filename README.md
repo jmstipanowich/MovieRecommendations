@@ -83,8 +83,8 @@ Contact me at jmstipanowich@gmail.com
 
 ├── images
 
-├── DoctorNoShowPowerpoint1.pdf
+├── README.md
+
+├── RecommendationSystems1.pdf
 
 ├── Recommendations.ipynb
-
-├── README.md
