@@ -79,6 +79,6 @@ Contact me at jmstipanowich@gmail.com
 
 ├── README.md
 
-├── RecommendationSystems1.pdf
+├── RecommendationSystems.pdf
 
 ├── Recommendations.ipynb
