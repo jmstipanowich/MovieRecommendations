@@ -11,7 +11,7 @@ Watching movies can be a lot of fun. When a person watches a movie, they often j
 
 ## Business Problem
 
-In this project, I am acting as a data scientist in a research lab at the University of Minnesota to build a recommendation system that recommends highly rated movies to people in the University of Minnesota area based on some past information and opinions on great movies expressed by these people. The project contains both modeling and function built-out methods for getting movie recommendations. I want to use a collaborative filtering user-based method to define movie recommendations for the people in this area. That means that the opinions of the movie raters involved in the experiment may affect the resulting recommendations for the other movie raters in the experiment. I plan to uncover 5 new movie recommendations for any person to watch involved in my experiment using my specific recommendation system algorithms for them each individually.
+In this project, I am acting as a data scientist in a research lab at the University of Minnesota to build a recommendation system that recommends highly rated movies to people in the University of Minnesota area based on some past information and opinions on great movies expressed by these people. The project contains both modeling and function built-out methods for getting movie recommendations. I want to use a collaborative filtering method to define movie recommendations for the people in this area. I plan to uncover 5 new movie recommendations for any person to watch involved in my experiment using my specific recommendation system algorithms for them each individually.
 
 ## The Data
 
@@ -31,43 +31,37 @@ Also, I constructed a graph of the number of rated movies for each unique user i
 
 ![userchart](images/userchart.png)
 
-There were explicit ratings from my dataset. The most number of ratings a single user provided was over 2500, which provides a lot of information for assembling recommendations in a user-based manner. Some users only provided a couple of ratings so a filling of missing values occurred in some of my recommedation systems creations to get more similarity information to provide predicted recommendations for some users.
+There were explicit ratings from my dataset. The most number of ratings a single user provided was over 2500, which provides a lot of information for assembling recommendations. Some users only provided a couple of ratings so a filling of missing values occurred in some of my recommedation systems creations to get more similarity information to provide predicted recommendations for some users.
 
 ## Data Modeling
 
-After trying different models and code, I chose to go with two different paths to retrieving top 5 movie recommendations. The ways I decided to attain movie recommendations included a model-based method involving Singular Value Decomposition(SVD) with a K Nearest Neighbors model and the creation of a function-based, built out, non-model method to get movie recommendations just using a Euclidean distance metric for similarities and python code.
+After trying different models and code, I chose to go with three different paths to retrieving top 5 movie recommendations. The best model for attaining top 5 movie recommendations was the SVD model.
 
-For both recommendation system methods I decided to find similar users to user 43 in the dataset who watched the movie, "Toy Story," and rated the movie a '5'. This was a highly rated film and I wanted to find similar such films through recommendation systems.
+For my recommendation system methods I decided to find recommendations for user 43 in the dataset who watched the movie, "Toy Story," and rated the movie a '5'. This was a highly rated film and I wanted to find similar such films through recommendation systems.
 
-The KNN model that included SVD had a solid RMSE of .8786. The KNN model determined five similar neighbor users to user 43 who watched the movie, "Toy Story." Most of the movie recommendations from this system were movies released around the same year that had high ratings.
+The SVD model had a solid RMSE of .8724. The SVD model is the best of the models I created with predicted values not far off from actual true values. SVD can deal with a cold start because it provides accurate estimated ratings for unwatched movies. The SVD model had the lowest RMSE of my models. Predictions can be made for any movie in the dataset for user 43 or for any other user. The recommendations provided were highly rated movies. Most movies recommended were released around the same year "Toy Story" was released. 
+
+The KNN model had a higher RMSE than the SVD model. The KNN model determined five similar neighbor users to user 43 who watched the movie, "Toy Story." Most of the movie recommendations from this system were movies released around the same year that Toy Story was released that had high ratings.
 
 The function-based built out method used a Euclidean distance metric to calculate user similarities. The function took out movies that were already watched by the user to increase the chance of unique movie recommendations. The function sorted the movies to only mostly recommend movies rated a '5' to keep with the theme of recommending only highly rated movies.
 
 ## The Cold Start Problem
 
-Both recommendation systems did well, but how do they address a common problem known as the cold start problem? The cold start problem occurs where a new user is introduced to the dataset that has not provided a substantial amount of information to make recommendations. SVD was included in the KNN model to address the cold start problem. SVD involves the creation of a sparse matrix where user ratings for movies can be inferred based off of a few provided ratings or small amount of information from a new user in relation to already provided user information. The new user can be asked to provide a small amount of information about possible interests and a new user can be categorized in accordance with similar user preferences to determine what the new user might like. Also, what is popular or trending can be a recommendation created for a new user. The KNN model mainly recommended highly rated movies around the same year that "Toy Story" was released, so what was popular in the year "Toy Story" was released was usually recommended to deal with the cold start problem. For the function-based recommendation system unrated movies were filled in with the mean rating for each column in the user ratings dataframe. A collaborative filtering user-based method was instilled. Movies that were already watched were left out of recommendations for a user. Movies that were recommended to users and considered popular were movies that were estimated to be highly rated by users.
+My recommendation systems did well, but how is a common problem known as the cold start problem addressed? The cold start problem occurs where a new user is introduced to the dataset that has not provided a substantial amount of information to make recommendations. The SVD model was included to address the cold start problem. SVD involves the creation of a sparse matrix where user ratings for movies can be inferred based off of a few provided ratings or small amount of information from a new user in relation to already provided user information. The new user can be asked to provide a small amount of information about possible interests and a new user can be categorized in accordance with similar user preferences to determine what the new user might like. Also, what is popular or trending can be a recommendation created for a new user. My models mainly recommended highly rated movies around the same year that "Toy Story" was released, so what was popular in the year "Toy Story" was released was usually recommended to deal with the cold start problem. For the function-based recommendation system unrated movies were filled in with the mean rating for each column in the user ratings dataframe. A collaborative filtering user-based method was instilled. Movies that were already watched were left out of recommendations for a user. Movies that were recommended to users and considered popular were movies that were estimated to be highly rated by users.
 
 ## Conclusions
 
-- Five similar movies to "Toy Story" from the neighboring users in the KNN model with ratings were: 
+- The best recommendation system employed SVD.
 
-Men in Black (a.k.a. MIB) (1997)/5.0,
+- Five similar movie recommendations for user 43 who watched "Toy Story" and rated it a '5' from the SVD model were: 
+
+Apollo 13 (1995)/4.9,
 Forrest Gump (1994)/5.0,
 Star Wars: Episode IV - A New Hope (1977)/5.0,
-Pinocchio (1940)/4.5,
-and Mrs. Doubtfire (1993)/3.5
-
-- Five similar movies to "Toy Story" from the function-based, built out recommendation system with ratings were:                                       
-     
-SORI: Voice from the Heart (2016)/5.0,
-Rivers and Tides (2001)/5.0,
-Presto (2008)/5.0,
-All the Vermeers in New York (1990)/5.0,
-and My Left Eye Sees Ghosts (Ngo joh aan gin diy g.../5.0
+The Jungle Book (1994)/4.8,
+and Mrs. Doubtfire (1993)/4.8
 
 ## Recommendations for Further Analysis
-
-- Consider an item-item based collaborative filtering method for getting recommendations
 
 - Change the distance metric and parameters for my function-based recommendation system
 
