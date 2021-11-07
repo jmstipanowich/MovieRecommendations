@@ -67,6 +67,8 @@ and Mrs. Doubtfire (1993)/4.8
 
 - Deploy a recommendation system for use to new users
 
+- Group movie data by genre and instill a genre-based movie recommendation system.
+
 ## For More Information
 
 See the full analysis of my findings in Recommendations.ipynb
